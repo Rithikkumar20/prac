@@ -52,13 +52,15 @@ function Destination() {
     <Show when={destinations()} fallback={<p>Loading...</p>}>
       <For each={destinations()}>
         {(destinations) =>(
-          <Destiny
-          images={destinations.images.png} 
-          name={destinations.name}
-          description={destinations.description}
-          distance={destinations.distance}
-          travel={destinations.travel}
-          />
+          <Show when={destinations.name === Name()}>
+            <Destiny
+              images={destinations.images.png} 
+              name={destinations.name}
+              description={destinations.description}
+              distance={destinations.distance}
+              travel={destinations.travel}
+            />
+          </Show>
        )}
       </For>
    </Show>
