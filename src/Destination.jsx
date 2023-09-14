@@ -23,45 +23,48 @@ function Destination() {
         <div class="flex h-full w-[30%] absolute left-[50%] justify-center text-white items-center text-xl">
             <div class="w-1/4 h-full flex justify-center items-center"
             onClick={() => {
-              (setDest(()=> "left-0"))
+              setDest( "left-0")
               (setName(()=> "Moon"))
             }}
             >Moon</div>
             <div class="w-1/4 h-full flex justify-center items-center"
             onClick={() => {
-              (setDest(()=> "left-1/4"))
+              setDest("left-1/4")
               (setName(()=>"Mars"))
             }}
             >Mars</div>
             <div class="w-1/4 h-full flex justify-center items-center"
             onClick={() => {
-             (setDest(()=> "left-2/4"))
+             setDest( "left-2/4")
              (setName(()=>"Europa"))
             }}
             >Europa</div>
             <div class="w-1/4 h-full flex justify-center items-center"
             onClick={() => {
-              (setDest(()=> "left-3/4"))
+              setDest( "left-3/4")
               (setName(()=>"Titan"))
             }}
             >Titan</div>
             <div class={`absolute transition-[left] duration-500 ease-out bottom-0 bg-white h-[2px] w-1/4 ${dest()}`}></div>
         </div> 
     </div>
-    console.log(${Name()})
+    <div class="w-[100vw] h-[60%] flex">
     <Show when={destinations()} fallback={<p>Loading...</p>}>
       <For each={destinations()}>
         {(destinations) =>(
-          <Destiny
-          images={destinations.images.png} 
-          name={destinations.name}
-          description={destinations.description}
-          distance={destinations.distance}
-          travel={destinations.travel}
-          />
+           <Show when={destinations.name === Name()}>
+            <Destiny
+              images={destinations.images.png} 
+              name={destinations.name}
+              description={destinations.description}
+              distance={destinations.distance}
+              travel={destinations.travel}
+            />
+           </Show>
        )}
       </For>
    </Show>
+   </div>
  </div>
   )
 }
